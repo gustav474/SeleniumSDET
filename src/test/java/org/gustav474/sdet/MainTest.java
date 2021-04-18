@@ -95,9 +95,7 @@ public class MainTest {
         YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.pushSubmitButton();
         int countOfMatchhing = yandexMailInboxPage.matchTitleByTextCounting(matchingTitle);
         YandexMailCompositionPage yandexMailCompositionPage = yandexMailInboxPage.pushComposeMailButton();
-        yandexMailCompositionPage.setTo(to);
-        yandexMailCompositionPage.setSubject(subject);
-        yandexMailCompositionPage.composeMail(countOfMatchhing);
+        yandexMailCompositionPage.composeMail(countOfMatchhing, to, subject);
         
         Assert.assertTrue(yandexMailCompositionPage.isMailSendingSuccessfully());
     }

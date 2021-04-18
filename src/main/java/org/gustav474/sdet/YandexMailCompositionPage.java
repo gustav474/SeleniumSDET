@@ -1,16 +1,12 @@
 package org.gustav474.sdet;
 
-import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-@Data
 public class YandexMailCompositionPage {
     private WebDriver driver;
-    private String to;
-    private String subject;
     private By toLocator = By.className("composeYabbles");
     private By subjectLocator = By.className("composeTextField");
     private By messageBodyLocator = By.xpath("//div[@id='cke_1_contents']/div/div");
@@ -21,7 +17,7 @@ public class YandexMailCompositionPage {
         this.driver = driver;
     }
 
-    public YandexMailCompositionPage composeMail(int countOfMatchingMails) {
+    public YandexMailCompositionPage composeMail(int countOfMatchingMails, String to, String subject) {
         String messageBody = String.format("Колличество найденных писем с темой 'Simbirsoft Тестовое задание': %d",
                 countOfMatchingMails);
         driver.findElement(toLocator).sendKeys(to);

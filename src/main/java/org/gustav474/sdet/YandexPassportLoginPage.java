@@ -1,10 +1,8 @@
 package org.gustav474.sdet;
 
-import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-@Data
 public class YandexPassportLoginPage {
     private WebDriver driver;
     private By loginLocator = By.xpath("//input[@id='passp-field-login']");
