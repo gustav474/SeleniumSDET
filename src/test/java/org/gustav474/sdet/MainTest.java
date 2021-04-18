@@ -68,8 +68,6 @@ public class MainTest {
         YandexMailLoginPage yandexMailLoginPage = new YandexMailLoginPage(driver);
         yandexMailLoginPage.open(targetYandexPage);
 
-        yandexMailLoginPage.setLogin(login);
-        yandexMailLoginPage.setPassword(password);
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
         yandexPassportLoginPage.setLogin(login);
         yandexPassportLoginPage.setPassword(password);
@@ -84,8 +82,6 @@ public class MainTest {
         YandexMailLoginPage yandexMailLoginPage = new YandexMailLoginPage(driver);
         yandexMailLoginPage.open(targetYandexPage);
 
-        yandexMailLoginPage.setLogin(login);
-        yandexMailLoginPage.setPassword(password);
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
         yandexPassportLoginPage.setLogin(login);
         yandexPassportLoginPage.setPassword(password);
@@ -101,8 +97,6 @@ public class MainTest {
         YandexMailLoginPage yandexMailLoginPage = new YandexMailLoginPage(driver);
         yandexMailLoginPage.open(targetYandexPage);
 
-        yandexMailLoginPage.setLogin(login);
-        yandexMailLoginPage.setPassword(password);
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
         yandexPassportLoginPage.setLogin(login);
         yandexPassportLoginPage.setPassword(password);
@@ -117,10 +111,10 @@ public class MainTest {
         Assert.assertTrue(yandexMailCompositionPage.isMailSendingSuccessfully());
     }
 
-//    @After
-//    public void after() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
+    @After
+    public void after() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }

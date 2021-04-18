@@ -6,14 +6,11 @@ import org.openqa.selenium.WebDriver;
 
 @Data
 public class YandexMailLoginPage {
-    private WebDriver driver;;
-    private String login;
-    private String password;
+    private WebDriver driver;
     private By logInButtonLocator = By.xpath("//a[contains(@href, 'https://passport.yandex.com/auth')]");
 
     public YandexMailLoginPage(WebDriver driver) {
         this.driver = driver;
-//        driver.get(targetYandexPage);
     }
 
     public YandexMailLoginPage open(String path) {
