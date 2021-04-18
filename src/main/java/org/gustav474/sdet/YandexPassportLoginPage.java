@@ -3,8 +3,6 @@ package org.gustav474.sdet;
 import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Data
 public class YandexPassportLoginPage {
@@ -24,14 +22,11 @@ public class YandexPassportLoginPage {
 
     public YandexPassportLoginPage typeLogin(String login) {
         driver.findElement(loginLocator).sendKeys(login);
-        pushSubmitButton();
         return this;
     }
 
     public YandexPassportLoginPage typePassword(String password) {
-        new WebDriverWait(driver, 7)
-                .until(ExpectedConditions.elementToBeClickable(passwordLocator))
-                .sendKeys(password);
+        driver.findElement(passwordLocator).sendKeys(password);
         return this;
     }
 }

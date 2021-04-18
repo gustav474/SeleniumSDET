@@ -51,16 +51,7 @@ public class MainTest {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName("chrome");
         driver = new RemoteWebDriver(new URL(node), caps);
-
-//        Set implicit wait:
-//        wait for WebElement
-        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-
-//        wait for loading page
-        driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
-
-//        wait for an asynchronous script to finish execution
-        driver.manage().timeouts().setScriptTimeout(5000, TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().implicitlyWait(7000, TimeUnit.MILLISECONDS);
     }
 
     @Test
@@ -70,6 +61,7 @@ public class MainTest {
 
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
         yandexPassportLoginPage.typeLogin(login);
+        yandexPassportLoginPage.pushSubmitButton();
         yandexPassportLoginPage.typePassword(password);
         YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.pushSubmitButton();
 
@@ -83,6 +75,7 @@ public class MainTest {
 
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
         yandexPassportLoginPage.typeLogin(login);
+        yandexPassportLoginPage.pushSubmitButton();
         yandexPassportLoginPage.typePassword(password);
         YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.pushSubmitButton();
         int countOfMatchhing = yandexMailInboxPage.matchTitleByTextCounting(matchingTitle);
@@ -97,6 +90,7 @@ public class MainTest {
 
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
         yandexPassportLoginPage.typeLogin(login);
+        yandexPassportLoginPage.pushSubmitButton();
         yandexPassportLoginPage.typePassword(password);
         YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.pushSubmitButton();
         int countOfMatchhing = yandexMailInboxPage.matchTitleByTextCounting(matchingTitle);

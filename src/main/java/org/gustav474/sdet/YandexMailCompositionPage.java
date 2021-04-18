@@ -24,9 +24,7 @@ public class YandexMailCompositionPage {
     public YandexMailCompositionPage composeMail(int countOfMatchingMails) {
         String messageBody = String.format("Колличество найденных писем с темой 'Simbirsoft Тестовое задание': %d",
                 countOfMatchingMails);
-        new WebDriverWait(driver, 7)
-                .until(ExpectedConditions.elementToBeClickable(toLocator))
-                .sendKeys(to);
+        driver.findElement(toLocator).sendKeys(to);
         driver.findElement(subjectLocator).sendKeys(subject);
         driver.findElement(messageBodyLocator).sendKeys(messageBody);
 
