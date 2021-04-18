@@ -13,17 +13,19 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MainTest {
-    static Properties defaultProps;
-    WebDriver driver;
+    private static Properties defaultProps;
+    private WebDriver driver;
     String node = defaultProps.getProperty("node");
     String login = defaultProps.getProperty("login");
     String password = defaultProps.getProperty("password");
     String to = defaultProps.getProperty("to");
     String subject = defaultProps.getProperty("subject");
     String matchingTitle = defaultProps.getProperty("matchingTitle");
+    String targetYandexPage = defaultProps.getProperty("targetYandexPage");
 
     /**
      * Reading properties from application.properties file
@@ -49,11 +51,23 @@ public class MainTest {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName("chrome");
         driver = new RemoteWebDriver(new URL(node), caps);
+
+//        Set implicit wait:
+//        wait for WebElement
+        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+
+//        wait for loading page
+        driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
+
+//        wait for an asynchronous script to finish execution
+        driver.manage().timeouts().setScriptTimeout(5000, TimeUnit.MILLISECONDS);
     }
 
     @Test
     public void test1YandexMailInboxAuthorization() {
         YandexMailLoginPage yandexMailLoginPage = new YandexMailLoginPage(driver);
+        yandexMailLoginPage.open(targetYandexPage);
+
         yandexMailLoginPage.setLogin(login);
         yandexMailLoginPage.setPassword(password);
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
@@ -68,6 +82,8 @@ public class MainTest {
     @Test
     public void test2YandexMailInboxMessageCountingByTitle() {
         YandexMailLoginPage yandexMailLoginPage = new YandexMailLoginPage(driver);
+        yandexMailLoginPage.open(targetYandexPage);
+
         yandexMailLoginPage.setLogin(login);
         yandexMailLoginPage.setPassword(password);
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
@@ -83,6 +99,8 @@ public class MainTest {
     @Test
     public void test3YandexSendMail() {
         YandexMailLoginPage yandexMailLoginPage = new YandexMailLoginPage(driver);
+        yandexMailLoginPage.open(targetYandexPage);
+
         yandexMailLoginPage.setLogin(login);
         yandexMailLoginPage.setPassword(password);
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
@@ -99,10 +117,10 @@ public class MainTest {
         Assert.assertTrue(yandexMailCompositionPage.isMailSendingSuccessfully());
     }
 
-    @After
-    public void after() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    @After
+//    public void after() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 }
