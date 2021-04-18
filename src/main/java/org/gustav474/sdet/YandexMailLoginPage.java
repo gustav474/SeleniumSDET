@@ -10,7 +10,7 @@ public class YandexMailLoginPage {
     private final String targetYandexPage = "https://mail.yandex.com";
     private String login;
     private String password;
-    By logInButtonLocator = By.linkText("Log in");
+    private By logInButtonLocator = By.linkText("Log in");
 
     public YandexMailLoginPage(WebDriver driver) {
         this.driver = driver;

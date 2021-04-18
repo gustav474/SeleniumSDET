@@ -11,9 +11,9 @@ public class YandexPassportLoginPage {
     private WebDriver driver;
     private String login;
     private String password;
-    By loginLocator = By.xpath("//input[@id='passp-field-login']");
-    By submitButtonLocator = By.xpath("//button[@type='submit']");
-    By passwordLocator = By.xpath("//input[@id='passp-field-passwd']");
+    private By loginLocator = By.xpath("//input[@id='passp-field-login']");
+    private By submitButtonLocator = By.xpath("//button[@type='submit']");
+    private By passwordLocator = By.xpath("//input[@id='passp-field-passwd']");
 
     public YandexPassportLoginPage(WebDriver driver) {
         this.driver = driver;

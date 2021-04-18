@@ -9,13 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @Data
 public class YandexMailCompositionPage {
     private WebDriver driver;
-    String to;
-    String subject;
-    By toLocator = By.className("composeYabbles");
-    By subjectLocator = By.className("composeTextField");
-    By messageBodyLocator = By.xpath("//div[@id='cke_1_contents']/child::div/child::div");
-    By composeButtonLocator = By.xpath("//div[@class='ComposeSendButton-Text']/parent::span/parent::button");
-    By successfullyMailSendingLocator = By.xpath("//div[@class='ComposeDoneScreen-Title']//child::span");
+    private String to;
+    private String subject;
+    private By toLocator = By.className("composeYabbles");
+    private By subjectLocator = By.className("composeTextField");
+    private By messageBodyLocator = By.xpath("//div[@id='cke_1_contents']/child::div/child::div");
+    private By composeButtonLocator = By.xpath("//div[@class='ComposeSendButton-Text']/parent::span/parent::button");
+    private By successfullyMailSendingLocator = By.xpath("//div[@class='ComposeDoneScreen-Title']//child::span");
 
     public YandexMailCompositionPage(WebDriver driver) {
         this.driver = driver;

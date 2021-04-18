@@ -9,9 +9,9 @@ import java.util.List;
 
 public class YandexMailInboxPage {
     private WebDriver driver;
-    By mailTitleLocator = By.xpath(
+    private By mailTitleLocator = By.xpath(
             "//span[@class='mail-MessageSnippet-Item mail-MessageSnippet-Item_subject']/child::span");
-    By composeLocator = By.xpath("//a[@href='#compose']");
+    private By composeLocator = By.xpath("//a[@href='#compose']");
 
     public YandexMailInboxPage(WebDriver driver) {
         this.driver = driver;
