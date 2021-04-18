@@ -13,9 +13,9 @@ public class YandexMailCompositionPage {
     private String subject;
     private By toLocator = By.className("composeYabbles");
     private By subjectLocator = By.className("composeTextField");
-    private By messageBodyLocator = By.xpath("//div[@id='cke_1_contents']/child::div/child::div");
-    private By composeButtonLocator = By.xpath("//div[@class='ComposeSendButton-Text']/parent::span/parent::button");
-    private By successfullyMailSendingLocator = By.xpath("//div[@class='ComposeDoneScreen-Title']//child::span");
+    private By messageBodyLocator = By.xpath("//div[@id='cke_1_contents']/div/div");
+    private By composeButtonLocator = By.xpath("//div[@class='ComposeSendButton-Text']/../..");
+    private By successfullyMailSendingLocator = By.xpath("//div[@class='ComposeDoneScreen-Title']/span");
 
     public YandexMailCompositionPage(WebDriver driver) {
         this.driver = driver;
