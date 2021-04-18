@@ -9,8 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @Data
 public class YandexPassportLoginPage {
     private WebDriver driver;
-    private String login;
-    private String password;
     private By loginLocator = By.xpath("//input[@id='passp-field-login']");
     private By submitButtonLocator = By.xpath("//button[@type='submit']");
     private By passwordLocator = By.xpath("//input[@id='passp-field-passwd']");
@@ -19,22 +17,21 @@ public class YandexPassportLoginPage {
         this.driver = driver;
     }
 
-    public YandexPassportLoginPage pushSubmitButton() {
+    public YandexMailInboxPage pushSubmitButton() {
         driver.findElement(submitButtonLocator).click();
-        return this;
+        return new YandexMailInboxPage(driver);
     }
 
-    public YandexPassportLoginPage typeLogin () {
+    public YandexPassportLoginPage typeLogin(String login) {
         driver.findElement(loginLocator).sendKeys(login);
         pushSubmitButton();
         return this;
     }
 
-    public YandexMailInboxPage typePassword () {
+    public YandexPassportLoginPage typePassword(String password) {
         new WebDriverWait(driver, 7)
                 .until(ExpectedConditions.elementToBeClickable(passwordLocator))
                 .sendKeys(password);
-        pushSubmitButton();
-        return new YandexMailInboxPage(driver);
+        return this;
     }
 }

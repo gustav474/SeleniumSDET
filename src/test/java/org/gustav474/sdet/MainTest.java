@@ -69,10 +69,9 @@ public class MainTest {
         yandexMailLoginPage.open(targetYandexPage);
 
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
-        yandexPassportLoginPage.setLogin(login);
-        yandexPassportLoginPage.setPassword(password);
-        yandexPassportLoginPage.typeLogin();
-        YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.typePassword();
+        yandexPassportLoginPage.typeLogin(login);
+        yandexPassportLoginPage.typePassword(password);
+        YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.pushSubmitButton();
 
         Assert.assertTrue(yandexMailInboxPage.isMailInboxPage());
     }
@@ -83,10 +82,9 @@ public class MainTest {
         yandexMailLoginPage.open(targetYandexPage);
 
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
-        yandexPassportLoginPage.setLogin(login);
-        yandexPassportLoginPage.setPassword(password);
-        yandexPassportLoginPage.typeLogin();
-        YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.typePassword();
+        yandexPassportLoginPage.typeLogin(login);
+        yandexPassportLoginPage.typePassword(password);
+        YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.pushSubmitButton();
         int countOfMatchhing = yandexMailInboxPage.matchTitleByTextCounting(matchingTitle);
 
         Assert.assertEquals(3, countOfMatchhing);
@@ -98,10 +96,9 @@ public class MainTest {
         yandexMailLoginPage.open(targetYandexPage);
 
         YandexPassportLoginPage yandexPassportLoginPage = yandexMailLoginPage.pushLogInButton();
-        yandexPassportLoginPage.setLogin(login);
-        yandexPassportLoginPage.setPassword(password);
-        yandexPassportLoginPage.typeLogin();
-        YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.typePassword();
+        yandexPassportLoginPage.typeLogin(login);
+        yandexPassportLoginPage.typePassword(password);
+        YandexMailInboxPage yandexMailInboxPage = yandexPassportLoginPage.pushSubmitButton();
         int countOfMatchhing = yandexMailInboxPage.matchTitleByTextCounting(matchingTitle);
         YandexMailCompositionPage yandexMailCompositionPage = yandexMailInboxPage.pushComposeMailButton();
         yandexMailCompositionPage.setTo(to);
